@@ -2,7 +2,8 @@
 
 **Asignatura:** Programación Orientada a Objetos  
 **Biblioteca seleccionada:** Flet  
-**Proyecto:** Contador interactivo
+**Proyecto:** Contador interactivo  
+**Autor:** Alexandro Leones Ortega
 
 ## 1. ¿Qué es Flet y cuál es su propósito principal?
 
@@ -134,9 +135,11 @@ Mediante esta clase se aplican conceptos de programación orientada a objetos co
 
 ## 10. Evidencias del proyecto
 
-Se incluyen capturas de pantalla de la aplicación funcionando dentro de la carpeta `evidencia`.
+Se incluye una captura de pantalla de la aplicación funcionando. Esta imagen permite comprobar que los botones responden correctamente a las acciones del usuario.
 
-Estas imágenes permiten comprobar que los botones responden correctamente a las acciones del usuario.
+![Contador interactivo funcionando](evidencia1.png)
+
+El código completo de la aplicación se encuentra en el archivo [main.py](main.py).
 
 ## 11. Conclusión
 
