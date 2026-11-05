@@ -2,14 +2,15 @@
 
 **Asignatura:** Programación Orientada a Objetos  
 **Biblioteca seleccionada:** Flet  
-**Proyecto:** Contador interactivo  
-**Autor:** Alexandro Leones Ortega
+**Proyecto:** Contador interactivo
 
 ## 1. ¿Qué es Flet y cuál es su propósito principal?
 
 Flet es una biblioteca de Python que permite desarrollar interfaces gráficas interactivas. Su propósito principal es facilitar la creación de aplicaciones con elementos visuales como botones, textos, imágenes y formularios, utilizando Python.
 
 ## 2. ¿Qué tipo de aplicaciones permite desarrollar?
+
+Flet permite desarrollar diferentes tipos de aplicaciones, entre ellas:
 
 - Aplicaciones de escritorio para Windows, Linux y macOS.
 - Aplicaciones web.
@@ -27,7 +28,7 @@ Para utilizar Flet se necesita:
 - Instalar la biblioteca Flet.
 - Tener conexión a Internet para descargar las dependencias.
 
-Para instalar Flet:
+Para instalar Flet se utiliza el siguiente comando:
 
 ```bash
 pip install "flet[all]"
@@ -41,6 +42,10 @@ python -c "import flet; print(flet.__version__)"
 
 ## 4. ¿Cuáles son sus principales componentes o elementos gráficos?
 
+Flet cuenta con diferentes componentes que permiten construir interfaces gráficas.
+
+Algunos de los principales son:
+
 - **Text:** permite mostrar textos en pantalla.
 - **Button:** permite crear botones interactivos.
 - **Column:** organiza los elementos verticalmente.
@@ -51,7 +56,9 @@ python -c "import flet; print(flet.__version__)"
 
 ## 5. ¿Cómo maneja los eventos del usuario?
 
-Flet utiliza eventos para detectar las acciones que realiza el usuario dentro de una aplicación. Por ejemplo, el evento `on_click` permite detectar cuando una persona presiona un botón.
+Flet utiliza eventos para detectar las acciones que realiza el usuario dentro de una aplicación.
+
+Por ejemplo, el evento `on_click` permite detectar cuando una persona presiona un botón.
 
 Cuando ocurre el evento, se ejecuta una función o método que realiza una acción. Después se puede actualizar la interfaz para mostrar los cambios.
 
@@ -77,27 +84,43 @@ En nuestro proyecto se utiliza este evento para aumentar, disminuir y reiniciar 
 
 ## 7. Desarrollo del ejemplo mínimo
 
-Se desarrolló una aplicación llamada **Contador Interactivo**. Comienza mostrando el número cero y contiene tres botones:
+Para demostrar el funcionamiento de Flet se desarrolló una aplicación llamada **Contador Interactivo**.
+
+La aplicación comienza mostrando el número cero y contiene tres botones:
 
 - **Sumar:** aumenta el contador en una unidad.
 - **Restar:** disminuye el contador en una unidad.
 - **Reiniciar:** devuelve el contador a cero.
 
+Cada botón ejecuta una acción diferente cuando el usuario hace clic.
+
 ## 8. Explicación del funcionamiento
 
-**¿Cómo se crea la ventana principal?** La aplicación utiliza Flet para crear y configurar la ventana principal. Se establece un título y un fondo blanco.
+### ¿Cómo se crea la ventana principal?
 
-**¿Cómo se crean los componentes gráficos?** Se utilizan componentes como `ft.Text`, `ft.Button`, `ft.Column` y `ft.Row` para mostrar el título, el número y los botones.
+La aplicación utiliza Flet para crear y configurar la ventana principal. Se establece un título y un fondo blanco.
 
-**¿Qué evento se implementó?** El evento `on_click`, que detecta cuando el usuario presiona alguno de los botones.
+### ¿Cómo se crean los componentes gráficos?
 
-**¿Qué función responde al evento?** Los métodos `sumar`, `restar` y `reiniciar`.
+Se utilizan componentes como `ft.Text`, `ft.Button`, `ft.Column` y `ft.Row` para mostrar el título, el número y los botones.
 
-**¿Cómo se modifica la interfaz?** El método `actualizar` modifica el valor del texto del contador y utiliza `self.page.update()` para mostrar el nuevo resultado.
+### ¿Qué evento se implementó?
+
+Se implementó el evento `on_click`, que detecta cuando el usuario presiona alguno de los botones.
+
+### ¿Qué función responde al evento?
+
+Los métodos `sumar`, `restar` y `reiniciar` se encargan de procesar las acciones del usuario.
+
+### ¿Cómo se modifica la interfaz?
+
+El método `actualizar` modifica el valor del texto del contador y utiliza `self.page.update()` para mostrar el nuevo resultado.
 
 ## 9. Reto adicional: programación orientada a objetos
 
-La aplicación utiliza una clase llamada `ContadorApp`, que administra el contador y sus componentes gráficos.
+La aplicación utiliza una clase llamada `ContadorApp`, que se encarga de administrar el contador y sus componentes gráficos.
+
+Sus principales métodos son:
 
 | Método | Responsabilidad |
 |---|---|
@@ -107,111 +130,19 @@ La aplicación utiliza una clase llamada `ContadorApp`, que administra el contad
 | `reiniciar` | Regresar el contador a cero. |
 | `actualizar` | Actualizar el número mostrado en pantalla. |
 
-Se aplican conceptos de programación orientada a objetos como clases, objetos, atributos, métodos y encapsulación básica.
+Mediante esta clase se aplican conceptos de programación orientada a objetos como clases, objetos, atributos, métodos y encapsulación básica.
 
-## 10. Código fuente
+## 10. Evidencias del proyecto
 
-El código completo también está en el archivo [main.py](main.py):
+Se incluyen capturas de pantalla de la aplicación funcionando dentro de la carpeta `evidencia`.
 
-```python
-import flet as ft
+Estas imágenes permiten comprobar que los botones responden correctamente a las acciones del usuario.
 
-
-class ContadorApp:
-    def __init__(self, page: ft.Page):
-        self.page = page
-        self.contador = 0
-
-        self.page.title = "Contador Interactivo"
-        self.page.bgcolor = ft.Colors.WHITE
-        self.page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-        self.page.vertical_alignment = ft.MainAxisAlignment.CENTER
-
-        self.titulo = ft.Text(
-            "Contador Interactivo",
-            size=24,
-            weight=ft.FontWeight.BOLD,
-            color=ft.Colors.BLACK,
-        )
-        self.texto_contador = ft.Text(
-            str(self.contador),
-            size=48,
-            weight=ft.FontWeight.BOLD,
-            color=ft.Colors.BLUE_600,
-        )
-
-        self.boton_sumar = ft.Button("Sumar", on_click=self.sumar)
-        self.boton_restar = ft.Button("Restar", on_click=self.restar)
-        self.boton_reiniciar = ft.Button("Reiniciar", on_click=self.reiniciar)
-
-        self.page.add(
-            ft.Column(
-                controls=[
-                    self.titulo,
-                    self.texto_contador,
-                    ft.Row(
-                        controls=[
-                            self.boton_restar,
-                            self.boton_reiniciar,
-                            self.boton_sumar,
-                        ],
-                        alignment=ft.MainAxisAlignment.CENTER,
-                    ),
-                ],
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            )
-        )
-
-    def sumar(self, e):
-        self.contador += 1
-        self.actualizar()
-
-    def restar(self, e):
-        self.contador -= 1
-        self.actualizar()
-
-    def reiniciar(self, e):
-        self.contador = 0
-        self.actualizar()
-
-    def actualizar(self):
-        self.texto_contador.value = str(self.contador)
-        self.page.update()
-
-
-def main(page: ft.Page):
-    ContadorApp(page)
-
-
-ft.run(main)
-```
-
-## 11. Instrucciones de ejecución
-
-1. Descarga o clona el repositorio y entra a la carpeta del proyecto.
-2. Instala las dependencias:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Ejecuta la aplicación:
-
-   ```bash
-   python main.py
-   ```
-
-## 12. Evidencias del proyecto
-
-Captura de la aplicación funcionando, donde los botones responden a las acciones del usuario:
-
-![Contador interactivo funcionando](evidencia1.png)
-
-## 13. Conclusión
+## 11. Conclusión
 
 Con este trabajo aprendí a utilizar Flet para crear interfaces gráficas con Python. También comprendí cómo funcionan los eventos del usuario y cómo se pueden aplicar los conceptos de programación orientada a objetos en una aplicación interactiva.
 
-## 14. Fuentes consultadas
+## 12. Fuentes consultadas
 
 1. Documentación oficial de Flet: https://flet.dev/docs/
 2. Instalación de Flet: https://flet.dev/docs/getting-started/installation/
